@@ -1,0 +1,12 @@
+<div>
+    {{title}}
+</div>
+{{source.length}}
+<div>
+    <span *ngFor="let item of getSelectedItems()">
+        {{item[labelField]}}
+    </span>
+</div>
+<div class="select-item" *ngFor="let item of source" [ngClass]="{'active': item.isChecked}" (click)="selectItem(item)">
+    {{item[labelField]}}
+</div>
