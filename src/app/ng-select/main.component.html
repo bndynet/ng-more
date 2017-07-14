@@ -1,4 +1,17 @@
-<p>
-  ng-select
-  <ng-select [source]="data" keyField="key" labelField="name"></ng-select>
-</p>
+<div class="page-header">
+  <h1>ng-select component </h1>
+</div>
+
+<label>
+  <input type="checkbox" [(ngModel)]="isMultiple" /> Multiple
+</label>
+
+
+<ng-select keyField="key" labelField="name" [source]="data" (itemSelected)="onItemSelected($event)" [multiple]="isMultiple"></ng-select>
+<hr>
+<ng-select keyField="key" labelField="name" [source]="data" [itemTemplate]="selectItem" (itemSelected)="onItemSelected($event)"
+  [multiple]="isMultiple"></ng-select>
+
+<ng-template #selectItem let-item="item">
+  {{item|json}} {{$index}}
+</ng-template>

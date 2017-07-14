@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgSelectMainComponent implements OnInit {
   data: any[];
+  isMultiple: boolean = false;
 
   constructor() {
     this.data = [
@@ -19,5 +20,9 @@ export class NgSelectMainComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onItemSelected(item) {
+    console.debug(item);
   }
 }
