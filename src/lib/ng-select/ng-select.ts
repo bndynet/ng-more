@@ -6,9 +6,10 @@ import { Component, OnInit, Input, Output, TemplateRef, EventEmitter } from '@an
     templateUrl: './ng-select.html',
 })
 export class NgSelect implements OnInit {
+
     _model: any;
 
-    @Input() @Output() multiple: boolean = false;
+    @Input() multiple: boolean = false;
     @Input() source: any[];
     @Input() keyField: string;
     @Input() labelField: string;
@@ -24,10 +25,9 @@ export class NgSelect implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        console.debug('n:' + this.model);
+        const m = this.model;
         this.source.forEach(element => {
-            const m = this.model;
-            if (this.keyField) {
+            if (this.keyField && m) {
                 if (Array.isArray(m)) {
                     m.forEach((item: any) => {
                         if (item[this.keyField] == element[this.keyField]) {
@@ -36,11 +36,21 @@ export class NgSelect implements OnInit {
                     })
                 }
                 else {
-
+                    switch (typeof m) {
+                        case 'object':
+                            if (m[this.keyField] == element[this.keyField]) {
+                                element.__isChecked = true;
+                            }
+                            break;
+                        default:
+                            if(m == element[this.keyField]) {
+                                element.__isChecked = true;
+                                this.model = element;
+                            }
+                        break;
+                    }
                 }
-
             }
-            element.__isChecked = false;
         });
     }
 
@@ -50,7 +60,6 @@ export class NgSelect implements OnInit {
     }
 
     set model(v: any) {
-        console.debug('m:' + this.model);
         if (v !== this._model) {
             this._model = v;
             this.modelChange.emit(this._model);
@@ -68,8 +77,8 @@ export class NgSelect implements OnInit {
             item.__isChecked = !item.__isChecked;
         }
 
-        this.model = this.getModel();
         this.itemSelected.emit(item);
+        this.model = this.getModel();
     }
 
     removeItem(item: any) {
