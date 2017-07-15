@@ -1,4 +1,6 @@
-<div>
+<div style="border:solid 1px #dedede; height: 20px;">
+    <ng-container *ngIf="placeholder && getSelectedItems().length==0 && !placeholderTemplate">{{placeholder}}</ng-container>
+    <ng-container *ngIf="getSelectedItems().length==0" [ngTemplateOutlet]="placeholderTemplate"></ng-container>
     <span *ngFor="let item of getSelectedItems()">
         <span *ngIf="labelField">
             {{item[labelField]}}
@@ -9,7 +11,7 @@
         <span (click)="removeItem(item)">&times;</span>
     </span>
 </div>
-<div class="select-item" *ngFor="let item of source" [ngClass]="{'active': item.isChecked}" (click)="selectItem(item)">
+<div class="select-item" *ngFor="let item of source" [ngClass]="{'active': item.__isChecked}" (click)="selectItem(item)">
     <ng-container *ngIf="!itemTemplate">
         {{item[labelField]}}
     </ng-container>

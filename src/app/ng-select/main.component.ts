@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgSelectMainComponent implements OnInit {
   data: any[];
+  selectedResult: any;
   isMultiple: boolean = false;
 
   constructor() {
+    this.selectedResult = "Default Selected Result";
     this.data = [
       { key: 1, name: 'Option #1' },
       { key: 2, name: 'Option #2' },
