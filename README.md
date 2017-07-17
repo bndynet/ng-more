@@ -21,6 +21,6 @@ This project enhances your HTML forms via Angular components.
 
 ## Available features
 
-| Components       | Features                                               |        |
-|------------------|--------------------------------------------------------|--------|
-| ng-select        | Support multiple selection                             |        |
+| Component       | Features                                                            | Notes        |
+|-----------------|---------------------------------------------------------------------|--------------|
+| ng-select       |            Multiple selection, placeholderTemplate and itemTemplate |              |
