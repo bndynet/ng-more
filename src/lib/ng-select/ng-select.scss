@@ -19,7 +19,9 @@
 
             .btn-remove {
                 display: inline-block;
-                padding: 0 5px;
+                padding: 0 8px;
+                margin-right: -5px;
+                border-radius: 0 3px 3px 0;
                 cursor: pointer;
                 
                 &:hover {
@@ -35,6 +37,8 @@
         background-color: #ffffff;
         border: solid 1px #dedede;
         border-radius: 4px;
+        max-height: 240px;
+        overflow-y: auto;
         
         .ng-select-option {
             padding: 5px 8px;
