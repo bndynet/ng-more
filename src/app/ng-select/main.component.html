@@ -1,31 +1,36 @@
 <div class="page-header">
-  <h1>ng-select component </h1>
+  <h1>ng-select</h1>
 </div>
 
-Result: {{selectedResult|json}}
-<hr>
-
-<label>
-  <input type="checkbox" [(ngModel)]="isMultiple" /> Multiple
-</label>
-
-<ng-select keyField="key" labelField="name"
-  placeholder="Select..."
-  [(model)]="selectedResult"
-  [source]="data" 
-  [multiple]="isMultiple"
-  (itemSelected)="onItemSelected($event)"></ng-select>
-<hr>
-<ng-select keyField="key" labelField="name" 
-  [source]="data" 
-  [multiple]="isMultiple"
-  [itemTemplate]="selectItem" 
-  [placeholderTemplate]="placeholder"
-  (itemSelected)="onItemSelected($event)"></ng-select>
-
-<ng-template #placeholder>
-  Please Choose...
-</ng-template>
-<ng-template #selectItem let-item="item">
-  {{item|json}} {{$index}}
-</ng-template>
+<section>
+  <label> <input type="checkbox" [(ngModel)]="isMultiple" /> Multiple </label>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-xs-6">
+        <label>Simple</label>
+        <ng-select keyField="key" labelField="name" placeholder="Select..." [(model)]="selectedResult" [source]="data" [multiple]="isMultiple"
+          (itemSelected)="onItemSelected($event)"></ng-select>
+      </div>
+      <div class="col-xs-6">
+        <label>Custom Template</label>
+        <ng-select keyField="key" labelField="name" [source]="data" [multiple]="isMultiple" [itemTemplate]="selectItem" [placeholderTemplate]="placeholder"
+          (itemSelected)="onItemSelected($event)"></ng-select>
+      </div>
+    </div>
+  </div>
+  <ng-template #placeholder>
+    Please Choose...
+  </ng-template>
+  <ng-template #selectItem let-item="item">
+    <div class="clearfix">
+      <div class="pull-left">
+        <i class="{{item.iconClass}}"></i> {{item.name}}
+      </div>
+      <div class="pull-right">
+        <small>{{item.name}}</small>
+      </div>
+    </div>
+  </ng-template>
+  Result: {{selectedResult|json}}
+  <hr>
+</section>

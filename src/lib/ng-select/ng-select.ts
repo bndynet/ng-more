@@ -1,13 +1,15 @@
-import { Component, OnInit, Input, Output, TemplateRef, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, TemplateRef, EventEmitter, ElementRef, HostListener } from '@angular/core';
 
 @Component({
     selector: 'ng-select',
-    // styleUrls: ['./ng-select.scss'],
+    styleUrls: ['./ng-select.scss'],
     templateUrl: './ng-select.html',
 })
 export class NgSelect implements OnInit {
 
     _model: any;
+    
+    isOpened: boolean = false;
 
     @Input() multiple: boolean = false;
     @Input() source: any[];
@@ -22,7 +24,9 @@ export class NgSelect implements OnInit {
     @Output() itemSelected: EventEmitter<any> = new EventEmitter();
     @Output() modelChange: EventEmitter<any> = new EventEmitter();
 
-    constructor() { }
+    constructor(
+        private elementRef: ElementRef,
+    ) { }
 
     ngOnInit() {
         const m = this.model;
@@ -66,28 +70,29 @@ export class NgSelect implements OnInit {
         }
     }
 
-    selectItem(item: any) {
+    _selectItem(item: any) {
         if (!this.multiple) {
             this.source.forEach(element => {
                 element.__isChecked = false;
             });
             item.__isChecked = true;
+            this._trigger();
         }
         else {
             item.__isChecked = !item.__isChecked;
         }
 
         this.itemSelected.emit(item);
-        this.model = this.getModel();
+        this.model = this._getModel();
     }
 
-    removeItem(item: any) {
+    _removeItem(item: any) {
         item.__isChecked = false;
-        this.model = this.getModel();
+        this.model = this._getModel();
     }
 
-    getModel(): any {
-        const selectedItems = this.getSelectedItems();
+    _getModel(): any {
+        const selectedItems = this._getSelectedItems();
         if (this.multiple) {
             return selectedItems;
         }
@@ -97,7 +102,7 @@ export class NgSelect implements OnInit {
         }
     }
 
-    getSelectedItems(): any[] {
+    _getSelectedItems(): any[] {
         const result: any[] = [];
         for (let item of this.source) {
             if (item.__isChecked) {
@@ -105,5 +110,26 @@ export class NgSelect implements OnInit {
             }
         }
         return result;
+    }
+
+    _trigger() {
+        if(this.disabled) return;
+
+        this.isOpened = !this.isOpened;
+        if(this.isOpened) {
+            const input = this.elementRef.nativeElement.querySelector('.form-control');
+            this.elementRef.nativeElement.querySelector('.ng-select-content').style.width = (input.clientWidth + 2) + 'px';
+        }
+    }
+
+    _close() {
+        this.isOpened = false;
+    } 
+
+    @HostListener('document:click')
+    _handleGlobalEvent () {
+        if(!this.elementRef.nativeElement.contains(event.target)){
+            this._close();
+        }
     }
 }

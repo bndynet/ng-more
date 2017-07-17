@@ -1,3 +1,55 @@
-.select-item {
-    padding: .5em;
+.ng-select {
+    .form-control {
+        padding: 3px;
+        display: flex;
+        cursor: pointer;
+        overflow: hidden;
+
+        .placeholder {
+            padding-left: 6px;
+            line-height: 1.8em;
+        }
+
+        .selected-item {
+            margin-right: 5px;
+            line-height: 1.8em;
+            background-color: #efefef;
+            padding: 0 5px;
+            border-radius: 3px;
+
+            .btn-remove {
+                display: inline-block;
+                padding: 0 5px;
+                cursor: pointer;
+                
+                &:hover {
+                    background-color: #dedede;
+                }
+            }
+        }
+    }
+
+    .ng-select-content {
+        position: absolute;
+        width: 100%;
+        background-color: #ffffff;
+        border: solid 1px #dedede;
+        border-radius: 4px;
+        
+        .ng-select-option {
+            padding: 5px 8px;
+
+            &:not(.disabled) {
+                cursor: pointer;
+            }
+
+            &:hover {
+                background-color: rgba(#efefef, .8);
+            }
+
+            &.active {
+                background-color: #efefef;
+            }
+        }
+    }
 }

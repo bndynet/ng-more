@@ -1,19 +1,25 @@
-<div style="border:solid 1px #dedede; height: 20px;">
-    <ng-container *ngIf="placeholder && getSelectedItems().length==0 && !placeholderTemplate">{{placeholder}}</ng-container>
-    <ng-container *ngIf="getSelectedItems().length==0" [ngTemplateOutlet]="placeholderTemplate"></ng-container>
-    <span *ngFor="let item of getSelectedItems()">
+<div class="ng-select">
+    <div class="form-control" (click)="_trigger()">
+        <span class="placeholder" *ngIf="placeholder && _getSelectedItems().length==0 && !placeholderTemplate">
+            {{placeholder}}
+        </span>
+        <ng-container *ngIf="_getSelectedItems().length==0" [ngTemplateOutlet]="placeholderTemplate"></ng-container>
+        <span class="selected-item" *ngFor="let item of _getSelectedItems()">
         <span *ngIf="labelField">
             {{item[labelField]}}
         </span>
         <span *ngIf="!labelField">
             {{item|json}}
         </span>
-        <span (click)="removeItem(item)">&times;</span>
-    </span>
-</div>
-<div class="select-item" *ngFor="let item of source" [ngClass]="{'active': item.__isChecked}" (click)="selectItem(item)">
-    <ng-container *ngIf="!itemTemplate">
-        {{item[labelField]}}
-    </ng-container>
-    <ng-container [ngTemplateOutlet]="itemTemplate" [ngOutletContext]="{item: item}"></ng-container>
+        <span class="btn-remove" (click)="_removeItem(item)">&times;</span>
+        </span>
+    </div>
+    <div class="ng-select-content" [hidden]="!isOpened">
+        <div class="ng-select-option" *ngFor="let item of source" [ngClass]="{'active': item.__isChecked}" (click)="_selectItem(item)">
+            <ng-container *ngIf="!itemTemplate">
+                {{item[labelField]}}
+            </ng-container>
+            <ng-container [ngTemplateOutlet]="itemTemplate" [ngOutletContext]="{item: item}"></ng-container>
+        </div>
+    </div>
 </div>

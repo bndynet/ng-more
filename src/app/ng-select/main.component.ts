@@ -13,11 +13,11 @@ export class NgSelectMainComponent implements OnInit {
   constructor() {
     this.selectedResult = { key: 3 };
     this.data = [
-      { key: 1, name: 'Option #1' },
-      { key: 2, name: 'Option #2' },
-      { key: 3, name: 'Option #3' },
-      { key: 4, name: 'Option #4' },
-      { key: 5, name: 'Option #5' },
+      { key: 1, name: 'Option #1', iconClass: 'glyphicon glyphicon-lock' },
+      { key: 2, name: 'Option #2', iconClass: 'glyphicon glyphicon-tag' },
+      { key: 3, name: 'Option #3', iconClass: 'glyphicon glyphicon-bookmark' },
+      { key: 4, name: 'Option #4', iconClass: 'glyphicon glyphicon-circle-arrow-left' },
+      { key: 5, name: 'Option #5', iconClass: 'glyphicon glyphicon-thumbs-up' },
     ]; 
   }
 
