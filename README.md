@@ -1,4 +1,4 @@
-# Components for Angular
+# Components for Angular 4
 
 This project enhances your HTML forms via Angular components. 
 
