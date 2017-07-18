@@ -1,6 +1,25 @@
 {
-  "name": "ng-select",
+  "name": "@bndynet/ng-more",
   "version": "1.0.1",
+  "description": "Components, directives and pipes for Angular 2+.",
+  "author": "Bendy Zhang (zb@bndy.net)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bndynet/ng-more.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bndynet/ng-more/issues"
+  },
+  "keywords": [
+    "typescript",
+    "angular",
+    "angular2",
+    "angular 2",
+    "angular4",
+    "angular 4",
+    "ng-select",
+    "multiple select"
+  ],
   "license": "MIT",
   "scripts": {
     "clean": "rimraf node_modules doc dist && npm cache clean",
