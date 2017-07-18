@@ -1,58 +1,67 @@
+$color-active: #dedede;
+$color-hover: rgba($color-active, .8);
 .ng-select {
     .form-control {
         padding: 3px;
         display: flex;
         cursor: pointer;
         overflow: hidden;
-
+        border: solid 1px $color-hover;
         .placeholder {
             padding-left: 6px;
             line-height: 1.8em;
         }
-
         .selected-item {
             margin-right: 5px;
             line-height: 1.8em;
             background-color: #efefef;
             padding: 0 5px;
-            border-radius: 3px;
-
             .btn-remove {
                 display: inline-block;
                 padding: 0 8px;
                 margin-right: -5px;
-                border-radius: 0 3px 3px 0;
                 cursor: pointer;
-                
                 &:hover {
                     background-color: #dedede;
                 }
             }
         }
     }
-
     .ng-select-content {
         position: absolute;
         width: 100%;
         background-color: #ffffff;
-        border: solid 1px #dedede;
-        border-radius: 4px;
+        border: solid 1px $color-active;
         max-height: 240px;
         overflow-y: auto;
-        
         .ng-select-option {
             padding: 5px 8px;
-
             &:not(.disabled) {
                 cursor: pointer;
             }
-
             &:hover {
-                background-color: rgba(#efefef, .8);
+                background-color: $color-hover;
             }
-
             &.active {
-                background-color: #efefef;
+                background-color: $color-active;
+            }
+        }
+    }
+    &.disabled {
+        .form-control {
+            cursor: default;
+            background-color: $color-hover;
+        }
+    }
+    &.with-radius {
+        .form-control,
+        .ng-select-content {
+            border-radius: 4px;
+        }
+        .selected-item {
+            border-radius: 3px;
+            .btn-remove {
+                border-radius: 0 3px 3px 0;
             }
         }
     }

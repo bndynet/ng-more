@@ -4,16 +4,17 @@
 
 <section>
   <label> <input type="checkbox" [(ngModel)]="isMultiple" /> Multiple </label>
+  <label> <input type="checkbox" [(ngModel)]="isDisabled" /> Disabled </label>
   <div class="form-group">
     <div class="row">
       <div class="col-xs-6">
         <label>Simple</label>
-        <ng-select keyField="key" labelField="name" placeholder="Select..." [(model)]="selectedResult" [source]="data" [multiple]="isMultiple"
+        <ng-select keyField="key" labelField="name" class="with-radius" placeholder="Select..." [(model)]="selectedResult" [disabled]="isDisabled" [source]="data" [multiple]="isMultiple"
           (itemSelected)="onItemSelected($event)"></ng-select>
       </div>
       <div class="col-xs-6">
         <label>Custom Template</label>
-        <ng-select keyField="key" labelField="name" [source]="data" [multiple]="isMultiple" [itemTemplate]="selectItem" [placeholderTemplate]="placeholder"
+        <ng-select keyField="key" labelField="name" class="with-radius" [(model)]="selectedResult" [disabled]="isDisabled" [source]="data" [multiple]="isMultiple" [itemTemplate]="selectItem" [placeholderTemplate]="placeholder"
           (itemSelected)="onItemSelected($event)"></ng-select>
       </div>
     </div>

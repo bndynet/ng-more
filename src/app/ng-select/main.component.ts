@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NgSelectMainComponent implements OnInit {
   data: any[];
   selectedResult: any;
-  isMultiple: boolean = false;
+  isMultiple = false;
 
   constructor() {
     this.selectedResult = { key: 3 };
@@ -18,13 +18,13 @@ export class NgSelectMainComponent implements OnInit {
       { key: 3, name: 'Option #3', iconClass: 'glyphicon glyphicon-bookmark' },
       { key: 4, name: 'Option #4', iconClass: 'glyphicon glyphicon-circle-arrow-left' },
       { key: 5, name: 'Option #5', iconClass: 'glyphicon glyphicon-thumbs-up' },
-    ]; 
+    ];
   }
 
   ngOnInit() {
   }
 
   onItemSelected(item) {
-    console.debug(item);
+    console.log(item);
   }
 }

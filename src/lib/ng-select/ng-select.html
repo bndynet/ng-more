@@ -1,4 +1,4 @@
-<div class="ng-select">
+<div class="ng-select" [ngClass]="{'disabled': disabled}">
     <div class="form-control" (click)="_trigger()">
         <span class="placeholder" *ngIf="placeholder && _getSelectedItems().length==0 && !placeholderTemplate">
             {{placeholder}}
@@ -11,7 +11,7 @@
         <span *ngIf="!labelField">
             {{item|json}}
         </span>
-        <span class="btn-remove" (click)="_removeItem(item)">&times;</span>
+        <span class="btn-remove" *ngIf="!disabled" (click)="_removeItem(item)">&times;</span>
         </span>
     </div>
     <div class="ng-select-content" [hidden]="!isOpened">

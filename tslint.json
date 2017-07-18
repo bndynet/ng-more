@@ -91,13 +91,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "my",
+      ["ng", "my"],
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "my",
+      ["ng", "my"],
       "kebab-case"
     ],
     "use-input-property-decorator": true,

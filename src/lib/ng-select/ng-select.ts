@@ -5,13 +5,13 @@ import { Component, OnInit, Input, Output, TemplateRef, EventEmitter, ElementRef
     styleUrls: ['./ng-select.scss'],
     templateUrl: './ng-select.html',
 })
-export class NgSelect implements OnInit {
+export class NgSelectComponent implements OnInit {
 
     _model: any;
-    
-    isOpened: boolean = false;
 
-    @Input() multiple: boolean = false;
+    isOpened = false;
+
+    @Input() multiple = false;
     @Input() source: any[];
     @Input() keyField: string;
     @Input() labelField: string;
@@ -29,29 +29,32 @@ export class NgSelect implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.elementRef.nativeElement.classList.forEach((item) => {
+            this.elementRef.nativeElement.querySelector('.ng-select').classList.add(item);
+        });
+
         const m = this.model;
         this.source.forEach(element => {
             if (this.keyField && m) {
                 if (Array.isArray(m)) {
                     m.forEach((item: any) => {
-                        if (item[this.keyField] == element[this.keyField]) {
+                        if (item[this.keyField] === element[this.keyField]) {
                             element.__isChecked = true;
                         }
-                    })
-                }
-                else {
+                    });
+                } else {
                     switch (typeof m) {
                         case 'object':
-                            if (m[this.keyField] == element[this.keyField]) {
+                            if (m[this.keyField] === element[this.keyField]) {
                                 element.__isChecked = true;
                             }
                             break;
                         default:
-                            if(m == element[this.keyField]) {
+                            if (m === element[this.keyField]) {
                                 element.__isChecked = true;
                                 this.model = element;
                             }
-                        break;
+                            break;
                     }
                 }
             }
@@ -77,8 +80,7 @@ export class NgSelect implements OnInit {
             });
             item.__isChecked = true;
             this._trigger();
-        }
-        else {
+        } else {
             item.__isChecked = !item.__isChecked;
         }
 
@@ -95,10 +97,10 @@ export class NgSelect implements OnInit {
         const selectedItems = this._getSelectedItems();
         if (this.multiple) {
             return selectedItems;
-        }
-        else {
-            if (selectedItems.length > 0)
+        } else {
+            if (selectedItems.length > 0) {
                 return selectedItems[0];
+            }
         }
     }
 
@@ -113,22 +115,24 @@ export class NgSelect implements OnInit {
     }
 
     _trigger() {
-        if(this.disabled) return;
+        if (this.disabled) {
+            return;
+        }
 
         this.isOpened = !this.isOpened;
-        if(this.isOpened) {
+        if (this.isOpened) {
             const input = this.elementRef.nativeElement.querySelector('.form-control');
-            this.elementRef.nativeElement.querySelector('.ng-select-content').style.width = (input.clientWidth + 2) + 'px';
+            this.elementRef.nativeElement.querySelector('.ng-select-content').style.width = input.clientWidth + 'px';
         }
     }
 
     _close() {
         this.isOpened = false;
-    } 
+    }
 
     @HostListener('document:click')
-    _handleGlobalEvent () {
-        if(!this.elementRef.nativeElement.contains(event.target)){
+    _handleGlobalEvent() {
+        if (!this.elementRef.nativeElement.contains(event.target)) {
             this._close();
         }
     }

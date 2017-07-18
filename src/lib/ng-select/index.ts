@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NgSelect } from './ng-select';
+import { NgSelectComponent } from './ng-select';
 
 @NgModule({
     imports: [
         BrowserModule,
     ],
     exports: [
-        NgSelect,
+        NgSelectComponent,
     ],
     declarations: [
-        NgSelect,
+        NgSelectComponent,
     ]
 })
 export class NgSelectModule { }
