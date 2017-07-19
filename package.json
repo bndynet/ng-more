@@ -1,6 +1,6 @@
 {
   "name": "@bndynet/ng-more",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Components, directives and pipes for Angular 2+.",
   "author": "Bendy Zhang <zb@bndy.net> (http://bndy.net)",
   "repository": {
