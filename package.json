@@ -18,7 +18,9 @@
     "angular4",
     "angular 4",
     "ng-select",
-    "multiple select"
+    "multiselect",
+    "multiple select",
+    "dropdown"
   ],
   "license": "MIT",
   "scripts": {
