@@ -9,6 +9,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+
 /**
  * Env
  * Get npm lifecycle event to identify the environment
@@ -59,7 +61,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.output = isTest ? {} : {
     path: root('dist'),
-    publicPath: isProd ? '/' : 'http://localhost:9000/',
+    publicPath: isProd ? '/ng-more/dist' : 'http://localhost:9000/',
     filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
   };
@@ -221,6 +223,10 @@ module.exports = function makeWebpackConfig() {
       new HtmlWebpackPlugin({
         template: './src/public/index.html',
         chunksSortMode: 'dependency'
+      }),
+
+      new BaseHrefWebpackPlugin({
+        baseHref: config.output.publicPath
       }),
 
       // Extract css files
