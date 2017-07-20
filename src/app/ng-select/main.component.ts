@@ -10,6 +10,9 @@ export class NgSelectMainComponent implements OnInit {
   selectedResult: any;
   isMultiple = false;
 
+  data1: string[];
+  selectedData1: string;
+
   constructor() {
     this.selectedResult = { key: 3 };
     this.data = [
@@ -19,6 +22,9 @@ export class NgSelectMainComponent implements OnInit {
       { key: 4, name: 'Option #4', iconClass: 'glyphicon glyphicon-circle-arrow-left' },
       { key: 5, name: 'Option #5', iconClass: 'glyphicon glyphicon-thumbs-up' },
     ];
+
+    this.data1 = ['Option #1', 'Option #2', 'Option #3'];
+    this.selectedData1 = 'Option #2';
   }
 
   ngOnInit() {

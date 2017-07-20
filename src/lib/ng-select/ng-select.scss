@@ -29,6 +29,7 @@ $color-hover: rgba($color-active, .8);
     }
     .ng-select-content {
         position: absolute;
+        z-index: 100;
         width: 100%;
         background-color: #ffffff;
         border: solid 1px $color-active;

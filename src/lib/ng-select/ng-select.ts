@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, Output, TemplateRef, EventEmitter, ElementRef, HostListener } from '@angular/core';
+import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'ng-select',
     styleUrls: ['./ng-select.scss'],
     templateUrl: './ng-select.html',
+    providers: [JsonPipe],
 })
 export class NgSelectComponent implements OnInit {
 
@@ -25,6 +27,7 @@ export class NgSelectComponent implements OnInit {
     @Output() modelChange: EventEmitter<any> = new EventEmitter();
 
     constructor(
+        private jsonPipe:  JsonPipe,
         private elementRef: ElementRef,
     ) { }
 
@@ -35,23 +38,27 @@ export class NgSelectComponent implements OnInit {
 
         const m = this.model;
         this.source.forEach(element => {
+            if(typeof(element) !== 'object') {
+                throw new TypeError('The item of ng-select source MUST be object!');
+            }
+
             if (this.keyField && m) {
                 if (Array.isArray(m)) {
                     m.forEach((item: any) => {
                         if (item[this.keyField] === element[this.keyField]) {
-                            element.__isChecked = true;
+                            element.__$isChecked = true;
                         }
                     });
                 } else {
                     switch (typeof m) {
                         case 'object':
                             if (m[this.keyField] === element[this.keyField]) {
-                                element.__isChecked = true;
+                                element.__$isChecked = true;
                             }
                             break;
                         default:
                             if (m === element[this.keyField]) {
-                                element.__isChecked = true;
+                                element.__$isChecked = true;
                                 this.model = element;
                             }
                             break;
@@ -73,15 +80,23 @@ export class NgSelectComponent implements OnInit {
         }
     }
 
+    _getItemLabel(item: any): string {
+        if (typeof (item) === 'object') {
+            return this.labelField ? item[this.labelField] : this.jsonPipe.transform(item);
+        } else {
+            return item;
+        }
+    }
+
     _selectItem(item: any) {
         if (!this.multiple) {
             this.source.forEach(element => {
-                element.__isChecked = false;
+                element.__$isChecked = false;
             });
-            item.__isChecked = true;
+            item.__$isChecked = true;
             this._trigger();
         } else {
-            item.__isChecked = !item.__isChecked;
+            item.__$isChecked = !item.__$isChecked;
         }
 
         this.itemSelected.emit(item);
@@ -89,7 +104,7 @@ export class NgSelectComponent implements OnInit {
     }
 
     _removeItem(item: any) {
-        item.__isChecked = false;
+        item.__$isChecked = false;
         this.model = this._getModel();
     }
 
@@ -107,7 +122,7 @@ export class NgSelectComponent implements OnInit {
     _getSelectedItems(): any[] {
         const result: any[] = [];
         for (let item of this.source) {
-            if (item.__isChecked) {
+            if (item.__$isChecked) {
                 result.push(item);
             }
         }

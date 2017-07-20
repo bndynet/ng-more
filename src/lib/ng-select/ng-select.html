@@ -5,19 +5,14 @@
         </span>
         <ng-container *ngIf="_getSelectedItems().length==0" [ngTemplateOutlet]="placeholderTemplate"></ng-container>
         <span class="selected-item" *ngFor="let item of _getSelectedItems()">
-        <span *ngIf="labelField">
-            {{item[labelField]}}
-        </span>
-        <span *ngIf="!labelField">
-            {{item|json}}
-        </span>
+        <span> {{_getItemLabel(item)}} </span>
         <span class="btn-remove" *ngIf="!disabled" (click)="_removeItem(item)">&times;</span>
         </span>
     </div>
     <div class="ng-select-content" [hidden]="!isOpened">
         <div class="ng-select-option" *ngFor="let item of source" [ngClass]="{'active': item.__isChecked}" (click)="_selectItem(item)">
             <ng-container *ngIf="!itemTemplate">
-                {{item[labelField]}}
+                {{_getItemLabel(item)}}
             </ng-container>
             <ng-container [ngTemplateOutlet]="itemTemplate" [ngOutletContext]="{item: item}"></ng-container>
         </div>
