@@ -2,6 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 
 import { NgSelectModule } from '../lib';
 
@@ -21,6 +22,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     BrowserModule,
     HttpModule,
     FormsModule,
+    HighlightJsModule,
+
     routing,
     NgSelectModule,
   ],
@@ -31,6 +34,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     NgSelectMainComponent,
   ],
   providers: [
+    HighlightJsService,
     ApiService
   ],
   bootstrap: [AppComponent]

@@ -10,3 +10,16 @@ html, body {
 .page-header {
     margin-top: 0;
 }
+
+/* hljs */
+.tab-pane {
+  pre {
+    padding: 0;
+
+    .hljs {
+      display: inline;
+      padding: 0;
+      background-color: transparent
+    }
+  }
+}

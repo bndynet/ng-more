@@ -38,7 +38,7 @@ export class NgSelectComponent implements OnInit {
 
         const m = this.model;
         this.source.forEach(element => {
-            if(typeof(element) !== 'object') {
+            if (typeof(element) !== 'object') {
                 throw new TypeError('The item of ng-select source MUST be object!');
             }
 

@@ -9,8 +9,9 @@
         <span class="btn-remove" *ngIf="!disabled" (click)="_removeItem(item)">&times;</span>
         </span>
     </div>
+    <div class="ng-select-arrow"></div>
     <div class="ng-select-content" [hidden]="!isOpened">
-        <div class="ng-select-option" *ngFor="let item of source" [ngClass]="{'active': item.__isChecked}" (click)="_selectItem(item)">
+        <div class="ng-select-option" *ngFor="let item of source" [ngClass]="{'active': item.__$isChecked}" (click)="_selectItem(item)">
             <ng-container *ngIf="!itemTemplate">
                 {{_getItemLabel(item)}}
             </ng-container>

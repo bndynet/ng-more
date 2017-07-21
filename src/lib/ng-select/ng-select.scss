@@ -1,6 +1,7 @@
 $color-active: #dedede;
 $color-hover: rgba($color-active, .8);
 .ng-select {
+    position: relative;
     .form-control {
         padding: 3px;
         display: flex;
@@ -27,6 +28,17 @@ $color-hover: rgba($color-active, .8);
             }
         }
     }
+    .ng-select-arrow {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid;
+        margin: 15px 10px;
+    }
     .ng-select-content {
         position: absolute;
         z-index: 100;
@@ -52,6 +64,10 @@ $color-hover: rgba($color-active, .8);
         .form-control {
             cursor: default;
             background-color: $color-hover;
+        }
+
+        .ng-select-arrow {
+            border-top-color: $color-hover;
         }
     }
     &.with-radius {

@@ -37,7 +37,7 @@
   Result: {{selectedResult|json}}
   <hr>
 
-  <div class="panel panel-danger tab-panel">
+  <div class="panel panel-primary tab-panel">
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
         <a href="#html" aria-controls="home" role="tab" data-toggle="tab">Html</a>
@@ -50,21 +50,11 @@
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="html">
-        <xmp>
-          <hr />
-          
-        </xmp>
-        <pre>
-          <code>
-          
-          <hr />
-          </code>
-        </pre>
+        <pre><code class="code xml" [innerHTML]="codeHtml" highlight-js-content=".highlight"></code></pre>
       </div>
       <div role="tabpanel" class="tab-pane" id="typescript">
-
+        <pre><code class="code typescript" [innerHTML]="codeTypeScript"></code></pre>
       </div>
     </div>
   </div>
-
 </section>
