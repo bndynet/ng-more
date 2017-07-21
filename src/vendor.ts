@@ -18,5 +18,5 @@ import 'bootstrap/dist/js/bootstrap.js';
 import '@bndynet/bootstrap-more/dist/bootstrap-more.min.css';
 import '@bndynet/bootstrap-more/dist/bootstrap-more.min.js';
 
-import 'highlight.js/styles/dark.css';
+import 'highlight.js/styles/github.css';
 import 'highlight.js/lib';
