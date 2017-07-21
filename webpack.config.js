@@ -206,7 +206,14 @@ module.exports = function makeWebpackConfig() {
           })
         ]
       }
-    })
+    }),
+
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      hljs: 'highlight.js',
+    }),
   ];
 
   if (!isTest && !isTestWatch) {

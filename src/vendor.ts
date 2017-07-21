@@ -11,5 +11,12 @@ import '@angularclass/hmr';
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
+import 'jquery/dist/jquery.js';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+
 import '@bndynet/bootstrap-more/dist/bootstrap-more.min.css';
 import '@bndynet/bootstrap-more/dist/bootstrap-more.min.js';
+
+import 'highlight.js/styles/dark.css';
+import 'highlight.js/lib';
