@@ -1,0 +1,11 @@
+<span class="ng-color" [ngClass]="{'disabled': disabled}">
+    <span class="ng-color-item-selected" (click)="_trigger()">
+        <span [ngStyle]="{'background-color': _getItemColor(_model)}" title="{{_getItemLabel(_model)}}"></span>
+    </span>
+    <div class="ng-color-content" [hidden]="!isOpened">
+        <div class="ng-color-item" [ngClass]="{'active': _model && item[keyField] == _model[keyField]}" *ngFor="let item of source" (click)="_selectItem(item)">
+            <span [ngStyle]="{'background-color': _getItemColor(item)}"></span>
+            <span>{{_getItemLabel(item)}}</span>
+        </div>
+    </div>
+</span>

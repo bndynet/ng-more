@@ -1,0 +1,10 @@
+<div class="page-header">
+    <h1>ng-color</h1>
+</div>
+
+<section>
+    <label> <input type="checkbox" [(ngModel)]="isDisabled" /> Disabled </label>
+    <br />
+    <ng-color [source]="data" keyField="id" valueField="color" labelField="label" [disabled]="isDisabled" [(model)]="selectedResult"></ng-color>
+    Result: {{selectedResult|json}}
+</section>

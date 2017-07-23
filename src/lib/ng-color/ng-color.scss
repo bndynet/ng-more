@@ -1,0 +1,48 @@
+.ng-color {
+    .ng-color-item {
+        cursor: pointer;
+        padding: 5px 10px;
+        span {
+            display: inline-block;
+            &:first-child {
+                position: relative;
+                top: 2px;
+                width: 1em;
+                height: 1em;
+                border: solid 1px #efefef;
+                border-radius: 3px;
+                margin-right: 5px;
+            }
+        }
+
+        &:hover {
+            background-color: #efefef;
+        }
+    }
+    .ng-color-item-selected {
+        cursor: pointer;
+        span {
+            position: relative;
+            top: 2px;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            border: solid 1px #efefef;
+            border-radius: 3px;
+        }
+    }
+
+    &.ng-color-item-selected {
+        cursor: default;
+    }
+
+    .ng-color-content {
+        position: absolute;
+        z-index: 99;
+        border: solid 1px #efefef;
+        padding: 5px 0;
+        min-width: 120px;
+        background-color: #ffffff;
+        border-radius: 3px;
+    }
+}
