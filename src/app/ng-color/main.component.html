@@ -5,6 +5,31 @@
 <section>
     <label> <input type="checkbox" [(ngModel)]="isDisabled" /> Disabled </label>
     <br />
-    <ng-color [source]="data" keyField="id" valueField="color" labelField="label" [disabled]="isDisabled" [(model)]="selectedResult"></ng-color>
+    <ng-color [source]="data" keyField="id" valueField="color" labelField="label" 
+        (itemSelected)="onItemSelected($event)"
+        [disabled]="isDisabled" 
+        [(model)]="selectedResult"></ng-color>
     Result: {{selectedResult|json}}
+
+    <hr>
+    <div class="panel panel-primary tab-panel">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#html" aria-controls="home" role="tab" data-toggle="tab">Html</a>
+        <div class="toolbox"></div>
+      </li>
+      <li role="presentation">
+        <a href="#typescript" aria-controls="profile" role="tab" data-toggle="tab">TypeScript</a>
+        <div class="toolbox"></div>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="html">
+        <pre><code class="code xml" [innerHTML]="codeHtml" highlight-js-content=".highlight"></code></pre>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="typescript">
+        <pre><code class="code typescript" [innerHTML]="codeTypeScript"></code></pre>
+      </div>
+    </div>
+  </div>
 </section>

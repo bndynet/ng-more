@@ -17,6 +17,7 @@ export class NgColorComponent implements OnInit {
     @Input() labelField: string;
     @Input() disabled: boolean;
 
+    @Output() itemSelected: EventEmitter<any> = new EventEmitter();
     @Output() modelChange: EventEmitter<any> = new EventEmitter();
 
     constructor(
@@ -62,6 +63,7 @@ export class NgColorComponent implements OnInit {
 
     _selectItem(item: any) {
         this.model = item;
+        this.itemSelected.emit(item);
         this._trigger();
     }
 

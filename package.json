@@ -20,7 +20,9 @@
     "ng-select",
     "multiselect",
     "multiple select",
-    "dropdown"
+    "dropdown",
+    "ng-color",
+    "color picker"
   ],
   "license": "MIT",
   "scripts": {
