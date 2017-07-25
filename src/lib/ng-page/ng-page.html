@@ -1,0 +1,18 @@
+<nav aria-label="Page navigation ng-page" [hidden]="pageCount <= 1">
+    <ul class="pagination">
+        <li [ngClass]="{'disabled': this.page === 1}">
+            <a aria-label="Previous" (click)="changePage(1)">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li *ngFor="let p of getPageNumbers()" [ngClass]="{'active': p === this.page}">
+            <a [hidden]="p<0" (click)="changePage(p)">{{p}}</a>
+            <a [hidden]="p>0">...</a>
+        </li>
+        <li [ngClass]="{'disabled': this.page === this.pageCount}">
+            <a aria-label="Next" (click)="changePage(pageCount)">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

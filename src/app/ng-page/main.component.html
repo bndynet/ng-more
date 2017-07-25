@@ -1,0 +1,17 @@
+<div class="page-header">
+    <h1>ng-page</h1>
+</div>
+
+<section>
+    <div class="btn-group">
+        <button class="btn {{pageSize==10?'btn-primary':'btn-default'}} " (click)="pageSize=10">10</button>
+        <button class="btn {{pageSize==100?'btn-primary':'btn-default'}}" (click)="pageSize=100">100</button>
+    </div>
+    {{pageSize}}
+    <ng-page [pageSize]="pageSize" itemCount="64" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
+    <br>
+    <ng-page [pageSize]="pageSize" itemCount="1020" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
+    <br>
+    <ng-page [pageSize]="pageSize" itemCount="103" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
+    Result: {{page}}
+</section>

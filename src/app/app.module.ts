@@ -4,13 +4,14 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 
-import { NgSelectModule, NgColorModule } from '../lib';
+import { NgSelectModule, NgColorModule, NgPageModule } from '../lib';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { NgSelectMainComponent } from './ng-select/main.component';
 import { NgColorMainComponent } from './ng-color/main.component';
+import { NgPageMainComponent } from './ng-page/main.component';
 
 
 import { ApiService } from './shared';
@@ -28,6 +29,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     routing,
     NgColorModule,
     NgSelectModule,
+    NgPageModule,
   ],
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
     NgSelectMainComponent,
     NgColorMainComponent,
+    NgPageMainComponent,
   ],
   providers: [
     HighlightJsService,
