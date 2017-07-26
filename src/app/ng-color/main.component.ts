@@ -48,6 +48,6 @@ export class NgColorMainComponent implements AfterViewInit {
     }
 
     onItemSelected(item) {
-        console.debug(item);
+        console.log(item);
     }
 }

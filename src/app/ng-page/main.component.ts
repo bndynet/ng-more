@@ -9,7 +9,8 @@ import * as he from 'he/he.js';
 })
 export class NgPageMainComponent implements AfterViewInit {
 
-    pageSize = 100;
+    itemCount = 105;
+    pageSize = 10;
     page = 3;
 
     codeHtml: string;
@@ -20,8 +21,14 @@ export class NgPageMainComponent implements AfterViewInit {
         private highlightJsService: HighlightJsService,
     ) {
         this.codeTypeScript = `
+itemCount = 105;
+pageSize = 10;
+page = 3;
         `;
         this.codeHtml = he.encode(`
+<input type="number" class="form-control" [(ngModel)]="itemCount" />
+<input type="number" class="form-control" [(ngModel)]="pageSize" />
+<ng-page [pageSize]="pageSize" [itemCount]="itemCount" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
 `);
     }
 
@@ -32,6 +39,6 @@ export class NgPageMainComponent implements AfterViewInit {
     }
 
     onPageChanged(p) {
-        console.debug(p);
+        console.log(p);
     }
 }

@@ -3,15 +3,39 @@
 </div>
 
 <section>
-    <div class="btn-group">
-        <button class="btn {{pageSize==10?'btn-primary':'btn-default'}} " (click)="pageSize=10">10</button>
-        <button class="btn {{pageSize==100?'btn-primary':'btn-default'}}" (click)="pageSize=100">100</button>
+    <div class="row">
+        <div class="col-xs-6">
+            <label>Item Count</label>
+            <input type="number" class="form-control" [(ngModel)]="itemCount" />
+        </div>
+        <div class="col-xs-6">
+            <label>Page Size</label>
+            <input type="number" class="form-control" [(ngModel)]="pageSize" />
+        </div>
     </div>
-    {{pageSize}}
-    <ng-page [pageSize]="pageSize" itemCount="64" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
     <br>
-    <ng-page [pageSize]="pageSize" itemCount="1020" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
-    <br>
-    <ng-page [pageSize]="pageSize" itemCount="103" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
-    Result: {{page}}
+    <ng-page [pageSize]="pageSize" [itemCount]="itemCount" [(model)]="page" (pageChanged)="onPageChanged($event)"></ng-page>
+    <br> Result: {{page}}
+
+    <hr>
+    <div class="panel panel-primary tab-panel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#html" aria-controls="home" role="tab" data-toggle="tab">Html</a>
+                <div class="toolbox"></div>
+            </li>
+            <li role="presentation">
+                <a href="#typescript" aria-controls="profile" role="tab" data-toggle="tab">TypeScript</a>
+                <div class="toolbox"></div>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="html">
+                <pre><code class="code xml" [innerHTML]="codeHtml" highlight-js-content=".highlight"></code></pre>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="typescript">
+                <pre><code class="code typescript" [innerHTML]="codeTypeScript"></code></pre>
+            </div>
+        </div>
+    </div>
 </section>

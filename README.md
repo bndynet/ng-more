@@ -23,5 +23,6 @@ This project enhances your HTML forms via Angular components.
 
 | Component       | Features                                                            | Notes        |
 |-----------------|---------------------------------------------------------------------|--------------|
-| ng-select       |            Multiple selection, placeholderTemplate and itemTemplate | [Demo](http://bndy.net/ng-more/dist/)         |
-| ng-color        |                                     Show specified colors to select | [Demo](http://bndy.net/ng-more/dist/)         |
+| ng-select       |            Multiple selection, placeholderTemplate and itemTemplate | [Demo](http://bndy.net/ng-more/dist/#/ng-select)         |
+| ng-color        |                                     Show specified colors to select | [Demo](http://bndy.net/ng-more/dist/#/ng-color)         |
+| ng-page         |                                            Provide pagination links | [Demo](http://bndy.net/ng-more/dist/#/ng-page)         |
