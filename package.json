@@ -22,7 +22,10 @@
     "multiple select",
     "dropdown",
     "ng-color",
-    "color picker"
+    "color picker",
+    "ng-page",
+    "pagination",
+    "bootstrap pagination"
   ],
   "license": "MIT",
   "scripts": {
